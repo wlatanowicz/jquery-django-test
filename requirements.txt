@@ -1,0 +1,7 @@
+django==${DJANGO_VERSION}
+django-environ==0.4.5
+psycopg2==2.7.3.2
+
+django-filer==1.4.3
+django_select2==6.3.1
+django-ckeditor==5.6.1

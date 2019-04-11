@@ -1,0 +1,89 @@
+version: '3'
+services:
+  app1-web:
+    build:
+      context: .
+      args:
+        BITBUCKET_CREDENTIALS: $BITBUCKET_USER:$BITBUCKET_TOKEN
+        DJANGO_VERSION: 1.11
+        PYTHON_VERSION: 2.7
+    image: asmodee-product-catalog-demo:app1
+    restart: on-failure
+    environment:
+      - DATABASE_URL=psql://app1:@db1:5432/app1
+      - PYTHONUNBUFFERED=1
+    ports:
+      - '8001:8000'
+    volumes:
+      - ./demo_app:/app/demo_app
+      - app1-status:/app/.status
+    links:
+      - db1
+    command:
+      - start
+      - migrate
+      - init_createsuperuser
+      - devserver
+
+  app2-web:
+    build:
+      context: .
+      args:
+        BITBUCKET_CREDENTIALS: $BITBUCKET_USER:$BITBUCKET_TOKEN
+        DJANGO_VERSION: 2.1
+        PYTHON_VERSION: 3.6
+    image: asmodee-product-catalog-demo:app2
+    restart: on-failure
+    environment:
+      - DATABASE_URL=psql://app2:@db2:5432/app2
+      - PYTHONUNBUFFERED=1
+    ports:
+      - '8002:8000'
+    volumes:
+      - ./demo_app:/app/demo_app
+      - app2-status:/app/.status
+    links:
+      - db2
+    command:
+      - start
+      - migrate
+      - init_createsuperuser
+      - devserver
+
+  db1:
+    image: postgres:10
+    restart: on-failure
+    volumes:
+      - db1:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=app1
+      - POSTGRES_USER=app1
+      - POSTGRES_PASSWORD=
+
+  db2:
+    image: postgres:10
+    restart: on-failure
+    volumes:
+      - db2:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=app2
+      - POSTGRES_USER=app2
+      - POSTGRES_PASSWORD=
+
+
+volumes:
+  app1-status:
+    driver: local
+    external: false
+
+  app2-status:
+    driver: local
+    external: false
+
+  db1:
+    driver: local
+    external: false
+
+  db2:
+    driver: local
+    external: false
