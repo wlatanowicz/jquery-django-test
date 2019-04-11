@@ -16,3 +16,5 @@ class Product(TranslatableModel):
 
     collection = models.ForeignKey(Collection, on_delete=models.CASCADE)
     image = FilerImageField(blank=True, null=True, on_delete=models.CASCADE)
+
+    date = models.DateTimeField(null=True)

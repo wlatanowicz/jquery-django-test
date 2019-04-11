@@ -20,7 +20,12 @@ class ProductAdmin(TranslatableAdmin):
                 'description',
                 'collection',
                 'image',
-                ]
+                # uncomment this to break jquery:
+                # 'date'
+                ],
+            # OR
+            # uncomment this to break jquery:
+            # "classes": ["collapse"],
         })
     ]
     form = forms.ProductAdminForm
