@@ -41,6 +41,9 @@ INSTALLED_APPS = (
     'parler',
 
     'ckeditor',
+
+    'taggit',
+    'asmodee_product_catalog',
 )
 
 MIDDLEWARE = (
