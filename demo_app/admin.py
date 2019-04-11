@@ -16,6 +16,7 @@ class ProductAdmin(admin.ModelAdmin):
             "fields": [
                 'name',
                 'collection',
+                'image',
                 ]
         })
     ]

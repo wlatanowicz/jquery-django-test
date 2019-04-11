@@ -34,6 +34,9 @@ INSTALLED_APPS = (
     'demo_app',
 
     'django_select2',
+
+    'filer',
+    'easy_thumbnails'
 )
 
 MIDDLEWARE = (
