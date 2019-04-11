@@ -1,4 +1,5 @@
 from django.db import models
+from parler.models import TranslatableModel, TranslatedFields
 from filer.fields.image import FilerImageField
 
 
@@ -6,7 +7,10 @@ class Collection(models.Model):
     name = models.CharField(max_length=250)
 
 
-class Product(models.Model):
-    name = models.CharField(max_length=250)
+class Product(TranslatableModel):
+    translations = TranslatedFields(
+        name=models.CharField(max_length=255)
+    )
+
     collection = models.ForeignKey(Collection, on_delete=models.CASCADE)
     image = FilerImageField(blank=True, null=True, on_delete=models.CASCADE)

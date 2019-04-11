@@ -1,10 +1,10 @@
-from django import forms
+from parler.forms import TranslatableModelForm
 
 from . import heavy_select_fields
 from . import models
 
 
-class ProductAdminForm(forms.ModelForm):
+class ProductAdminForm(TranslatableModelForm):
     class Meta:
         model = models.Product
         fields = '__all__'

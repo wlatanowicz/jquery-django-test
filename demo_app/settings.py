@@ -36,7 +36,9 @@ INSTALLED_APPS = (
     'django_select2',
 
     'filer',
-    'easy_thumbnails'
+    'easy_thumbnails',
+
+    'parler',
 )
 
 MIDDLEWARE = (
