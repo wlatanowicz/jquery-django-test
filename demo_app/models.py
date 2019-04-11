@@ -1,6 +1,7 @@
 from django.db import models
 from parler.models import TranslatableModel, TranslatedFields
 from filer.fields.image import FilerImageField
+from ckeditor.fields import RichTextField
 
 
 class Collection(models.Model):
@@ -9,7 +10,8 @@ class Collection(models.Model):
 
 class Product(TranslatableModel):
     translations = TranslatedFields(
-        name=models.CharField(max_length=255)
+        name=models.CharField(max_length=255),
+        description = RichTextField(),
     )
 
     collection = models.ForeignKey(Collection, on_delete=models.CASCADE)

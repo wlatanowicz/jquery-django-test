@@ -17,6 +17,7 @@ class ProductAdmin(TranslatableAdmin):
         ('Required data', {
             "fields": [
                 'name',
+                'description',
                 'collection',
                 'image',
                 ]

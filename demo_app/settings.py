@@ -39,6 +39,8 @@ INSTALLED_APPS = (
     'easy_thumbnails',
 
     'parler',
+
+    'ckeditor',
 )
 
 MIDDLEWARE = (
